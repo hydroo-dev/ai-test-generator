@@ -2,7 +2,9 @@
 
 An intelligent web app that generates detailed test cases for any feature using Google's Gemini AI. Just describe what you want to test, and get comprehensive test cases with steps, preconditions, and expected results.
 
-![Demo](demo-screenshot.png)
+![Demo](screen-capture.webm)
+![Demo](screencapture-localhost-3000-2026-02-16-23_31_51.png)
+![Demo](screencapture-localhost-3000-2026-02-16-23_32_45.png)
 
 ## ✨ Features
 
