@@ -1,4 +1,4 @@
-// backend/server.js - FIXED VERSION WITH CLEAR PROMPT
+// backend/server.js - FIXED VERSION WITH CLEAR PROMPTS
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');

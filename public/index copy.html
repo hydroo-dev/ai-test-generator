@@ -151,96 +151,24 @@
             color: white;
         }
 
-        /* Video Loader Overlay - Hidden by default */
-        #video-loader-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0a2540;
-            display: none;  /* Hidden by default */
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        #video-loader-overlay.show {
-            display: flex;  /* Show when needed */
-        }
-
-        /* Video container */
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        /* Background video */
-        #loader-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
-            object-fit: cover;
-            opacity: 0.7;
-        }
-
-        /* Audio element - hidden */
-        #loader-audio {
+        .loading {
             display: none;
-        }
-
-        /* Gradient overlay for better text visibility */
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(10, 37, 64, 0.95) 0%, rgba(10, 37, 64, 0.7) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
             text-align: center;
-            z-index: 1;
+            margin: 30px 0;
+            padding: 40px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
         }
 
-        /* Loading text animation */
-        .loading-text {
-            font-size: 2.8rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-            animation: pulse 1.5s ease-in-out infinite;
-            background: linear-gradient(135deg, #fff 0%, #2dc4b6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.02); }
-        }
-
-        /* Loading spinner */
-        .loader-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255, 255, 255, 0.2);
+        .loading-spinner {
+            border: 4px solid #e2e8f0;
             border-top: 4px solid #2dc4b6;
             border-radius: 50%;
+            width: 50px;
+            height: 50px;
             animation: spin 1s linear infinite;
-            margin: 20px auto;
+            margin: 0 auto 20px;
         }
 
         @keyframes spin {
@@ -248,59 +176,9 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Loading progress bar */
-        .progress-bar {
-            width: 350px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            margin: 20px auto;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(45, 196, 182, 0.3);
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #2dc4b6, #4a9eff);
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-
-        /* Percentage counter */
-        .percentage {
-            font-size: 1.4rem;
-            color: #2dc4b6;
-            font-weight: 600;
-            margin-top: 15px;
-            text-shadow: 0 0 10px rgba(45, 196, 182, 0.5);
-        }
-
-        /* Small loading message at bottom */
-        .loading-message {
-            position: absolute;
-            bottom: 40px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Bot image in loader */
-        .loader-bot {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 20px rgba(45, 196, 182, 0.5));
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .loading p {
+            color: #2d3e5f;
+            font-size: 1.1em;
         }
 
         .results {
@@ -616,73 +494,27 @@
             button {
                 width: 100%;
             }
-
-            .loading-text {
-                font-size: 2rem;
-            }
-
-            .progress-bar {
-                width: 280px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Full-screen Video Loader - Hidden by default, shows only during generation -->
-    <div id="video-loader-overlay">
-        <div class="video-container">
-            <!-- Video with audio -->
-            <video id="loader-video" autoplay loop playsinline>
-                <source src="Sharat.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            
-            <!-- Audio element (separate for better control) -->
-            <audio id="loader-audio" loop>
-                <source src="Sharat.mp3" type="audio/mpeg">
-                <source src="Sharat.mp4" type="audio/mp4">
-                Your browser does not support the audio element.
-            </audio>
-            
-            <!-- Gradient overlay with loading content -->
-            <div class="video-overlay">
-                <!-- Your bot image from header -->
-                <img src="JhPbcP.gif" class="loader-bot" alt="Bot">
-                
-                <div class="loading-text">मैं हूं ना BOT</div>
-                <div class="loading-text" style="font-size: 1.5rem; margin-top: -10px;">Preparing Your Test Cases</div>
-                
-                <!-- Spinner -->
-                <div class="loader-spinner"></div>
-                
-                <!-- Progress bar -->
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
-                </div>
-                
-                <!-- Percentage counter -->
-                <div class="percentage" id="loading-percentage">0%</div>
-                
-                <!-- Small message at bottom -->
-                <div class="loading-message">
-                    Generating AI-powered test cases • Please wait 15-20 seconds
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <div class="header" style="text-align:center;">
+
+    <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
+        <img src="wired-outline-2512-artificial-intelligence-ai-alt.gif"
+             style="height:65px; width:65px; object-fit:contain;">
+        <h1 style="margin:0; font-size:45px; line-height:45px;">
+            Test Case Generator
+        </h1>
     </div>
 
-    <div class="container" id="main-container">
-        <div class="header" style="text-align:center;">
-            <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
-                <img src="JhPbcP.gif" style="height:105px; width:165px; ">
-                <h1 style="margin:0; font-size:45px; line-height:45px;">
-                    मैं हूं ना BOT
-                </h1>
-            </div>
-            <p style="margin-top:12px; font-size:16px;">
-                Describe your feature and get detailed test cases with step-by-step instructions
-            </p>
-        </div>
+    <p style="margin-top:12px; font-size:16px;">
+        Describe your feature and get detailed test cases with step-by-step instructions
+    </p>
+
+</div>
+
 
         <div class="content">
             <div class="input-section">
@@ -708,6 +540,12 @@
                 </div>
 
                 <div id="connectionStatus" class="connection-status"></div>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p>Generating detailed test cases with AI...</p>
+                <small style="color: #999;">This may take 15-20 seconds</small>
             </div>
 
             <div class="results" id="results">
@@ -737,6 +575,7 @@
         const generateBtn = document.getElementById('generateBtn');
         const testApiBtn = document.getElementById('testApiBtn');
         const mockBtn = document.getElementById('mockBtn');
+        const loading = document.getElementById('loading');
         const results = document.getElementById('results');
         const featureInput = document.getElementById('feature');
         const displayedFeature = document.getElementById('displayedFeature');
@@ -745,13 +584,6 @@
         const modelInfo = document.getElementById('modelInfo');
         const examplePrompts = document.getElementById('examplePrompts');
         const connectionStatus = document.getElementById('connectionStatus');
-        
-        // Video loader elements
-        const videoLoader = document.getElementById('video-loader-overlay');
-        const loaderVideo = document.getElementById('loader-video');
-        const loaderAudio = document.getElementById('loader-audio');
-        const loadingPercentage = document.getElementById('loading-percentage');
-        const progressFill = document.getElementById('progress-fill');
 
         // Get the base URL dynamically
         const baseUrl = window.location.origin;
@@ -777,67 +609,6 @@
             });
             examplePrompts.appendChild(chip);
         });
-
-        // Function to update loading percentage
-        function updateLoadingPercentage(percent) {
-            if (loadingPercentage) {
-                const roundedPercent = Math.min(100, Math.round(percent));
-                loadingPercentage.textContent = `${roundedPercent}%`;
-                if (progressFill) {
-                    progressFill.style.width = `${roundedPercent}%`;
-                }
-            }
-        }
-
-        // Function to show video loader (only during generation)
-        function showVideoLoader() {
-            videoLoader.classList.add('show');
-            
-            // Play video with audio
-            if (loaderVideo) {
-                loaderVideo.play().catch(e => console.log('Video autoplay failed:', e));
-            }
-            if (loaderAudio) {
-                loaderAudio.play().catch(e => console.log('Audio autoplay failed:', e));
-            }
-            
-            // Reset percentage
-            updateLoadingPercentage(0);
-            
-            // Simulate progress for 15-20 seconds
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 5;
-                if (progress < 95) {
-                    updateLoadingPercentage(progress);
-                }
-            }, 500);
-            
-            // Store interval to clear later
-            window.loaderProgressInterval = interval;
-        }
-
-        // Function to hide video loader (when generation completes)
-        function hideVideoLoader() {
-            videoLoader.classList.remove('show');
-            
-            // Stop video and audio
-            if (loaderVideo) {
-                loaderVideo.pause();
-                loaderVideo.currentTime = 0;
-            }
-            if (loaderAudio) {
-                loaderAudio.pause();
-                loaderAudio.currentTime = 0;
-            }
-            
-            // Clear progress interval
-            if (window.loaderProgressInterval) {
-                clearInterval(window.loaderProgressInterval);
-            }
-            
-            console.log('🎬 Video loader stopped');
-        }
 
         // Test API Connection
         testApiBtn.addEventListener('click', async () => {
@@ -872,10 +643,8 @@
         mockBtn.addEventListener('click', async () => {
             const feature = featureInput.value.trim() || "Login page functionality";
 
-            // Show video loader only during mock data loading
-            showVideoLoader();
-            
             try {
+                loading.style.display = 'block';
                 results.style.display = 'none';
                 connectionStatus.style.display = 'none';
 
@@ -889,13 +658,8 @@
 
                 const data = await response.json();
 
-                updateLoadingPercentage(100);
-
                 if (data.success) {
-                    setTimeout(() => {
-                        displayTestCases(data.testCases, data.feature, 'Mock Data');
-                        hideVideoLoader();
-                    }, 500);
+                    displayTestCases(data.testCases, data.feature, 'Mock Data');
                 } else {
                     throw new Error(data.error || 'Failed to load mock data');
                 }
@@ -903,7 +667,8 @@
                 console.error('❌ Mock data error:', error);
                 connectionStatus.className = 'connection-status error';
                 connectionStatus.innerHTML = `❌ Error loading mock data: ${error.message}`;
-                hideVideoLoader();
+            } finally {
+                loading.style.display = 'none';
             }
         });
 
@@ -1192,7 +957,7 @@ test('${testCase.title || 'Test Case'}', async ({ page }) => {
                 });
         };
 
-        // Main generate function - Video loader sirf yahan aayega!
+        // Main generate function
         generateBtn.addEventListener('click', async () => {
             const feature = featureInput.value.trim();
 
@@ -1202,9 +967,7 @@ test('${testCase.title || 'Test Case'}', async ({ page }) => {
                 return;
             }
 
-            // Show video loader with audio - SIRF GENERATE PAR!
-            showVideoLoader();
-            
+            loading.style.display = 'block';
             results.style.display = 'none';
             connectionStatus.style.display = 'none';
             generateBtn.disabled = true;
@@ -1230,13 +993,8 @@ test('${testCase.title || 'Test Case'}', async ({ page }) => {
                 const data = await response.json();
                 console.log('✅ Response received:', data);
 
-                updateLoadingPercentage(100);
-
                 if (data.success) {
-                    setTimeout(() => {
-                        displayTestCases(data.testCases, data.feature, data.model);
-                        hideVideoLoader(); // Video band karo, content dikhao
-                    }, 800);
+                    displayTestCases(data.testCases, data.feature, data.model);
                 } else {
                     throw new Error(data.error || 'Unknown error');
                 }
@@ -1244,8 +1002,8 @@ test('${testCase.title || 'Test Case'}', async ({ page }) => {
                 console.error('❌ Error:', error);
                 connectionStatus.className = 'connection-status error';
                 connectionStatus.innerHTML = `❌ Failed to connect to ${baseUrl}<br>Error: ${error.message}<br>Make sure backend is running on port 3000`;
-                hideVideoLoader(); // Error aaya to bhi video band karo
             } finally {
+                loading.style.display = 'none';
                 generateBtn.disabled = false;
             }
         });
@@ -1257,7 +1015,7 @@ test('${testCase.title || 'Test Case'}', async ({ page }) => {
             }
         });
 
-        // Auto-test connection on page load (Normal, without video)
+        // Auto-test connection on page load
         window.addEventListener('load', () => {
             setTimeout(() => {
                 fetch(`${baseUrl}/api/health`)
